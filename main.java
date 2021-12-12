@@ -45,6 +45,7 @@ public class main{
 			System.out.println("Dlya vyhoda iz programmy vvedite 0");
 			System.out.println("Dlya poiska towara vvedite 1");
 			System.out.println("Dlya udaleniya towara vvedite 2");
+			System.out.println("Dlya prosmotra ostatkov towara na sklade vvedite 3");
 		
 			System.out.println("/-------------------------------------------/");
 			System.out.print(">>> ");
@@ -69,6 +70,8 @@ public class main{
 				dellTowar(towars, s);
 			}else if(vybor==0){
 				break;
+			}else if(vybor==3){
+				ostatok(towars);
 			}
 		}
 
@@ -179,6 +182,18 @@ public class main{
 
 
 
+	}
+
+	public static void ostatok(Object spisoc[][]){
+		for (int i=0;i<spisoc.length;i++){
+
+			if ((int)spisoc[i][2]>0) {
+
+				System.out.println("Nazvaniye: "+spisoc[i][0]+"    Cena: "+spisoc[i][1]+"    Collicestco: "+spisoc[i][2]);
+
+			}
+			
+		}
 	}
 
 
