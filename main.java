@@ -42,10 +42,12 @@ public class main{
 
 		for(;true;){
 			System.out.println("/-------------------------------------------/");
+
 			System.out.println("Dlya vyhoda iz programmy vvedite 0");
 			System.out.println("Dlya poiska towara vvedite 1");
 			System.out.println("Dlya udaleniya towara vvedite 2");
 			System.out.println("Dlya prosmotra ostatkov towara na sklade vvedite 3");
+			System.out.println("Dlya prodajy towara vvedite 4");
 		
 			System.out.println("/-------------------------------------------/");
 			System.out.print(">>> ");
@@ -72,6 +74,8 @@ public class main{
 				break;
 			}else if(vybor==3){
 				ostatok(towars);
+			}else if(vybor==4){
+				sell(towars, s);
 			}
 		}
 
@@ -194,6 +198,54 @@ public class main{
 			}
 			
 		}
+	}
+
+	public static void sell(Object spisoc[][], Scanner s){
+
+		for (int i=0;i<spisoc.length;i++){
+
+			if (!("sedrtfyghj8764".toString()).equals(spisoc[i][0].toString())) {
+
+				System.out.println("Nazvaniye: "+spisoc[i][0]+"    Cena: "+spisoc[i][1]+"    Collicestco: "+spisoc[i][2]);
+
+			}
+			
+		}
+
+		System.out.println("/-------------------------------------------/");
+		System.out.print("Vvedite nazvanie towara dlya ego prodaji: ");
+		namePoisk=new StringBuilder(s.nextLine());
+
+		System.out.println("/-------------------------------------------/");
+		System.out.print("Skolko shtuk hotite prodat: ");
+		collichestvoPoisk = s.nextInt();
+		s.nextLine();
+
+		if(collichestvoPoisk>0){
+
+			for (int i=0;i<spisoc.length;i++){
+
+
+				if ((namePoisk.toString()).equals(spisoc[i][0].toString())) {
+
+					if((((int)spisoc[i][2])-collichestvoPoisk)<0){
+						System.out.println("Vy ne mojete prodaty bolse chem esty na sklade");
+						break;
+					}
+
+					spisoc[i][2]=(int)spisoc[i][2]-collichestvoPoisk;
+
+					System.out.println("Vy prodali "+spisoc[i][0]+". "+collichestvoPoisk+" shtuc. Po cene "+spisoc[i][1]);
+					System.out.println("Summa poluchenyh deneg sostavlaet "+(collichestvoPoisk*(float)spisoc[i][1]));
+					break;
+
+				}
+			}
+
+		}else{
+			System.out.println("Vy ne mojete prodat otricacelnoe znachenie.");
+		}
+
 	}
 
 
