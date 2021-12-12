@@ -7,6 +7,7 @@ public class main{
 		StringBuilder name;
 		float price;
 		int collichestvo;
+		byte vybor;
 
 		System.out.print("Vvedite collichestvo tovarov v vashey aptece: ");
 		colTovars = s.nextInt();
@@ -38,6 +39,107 @@ public class main{
 			towars[i-1][1]=price;
 			towars[i-1][2]=collichestvo;
 		}
+
+		System.out.println("Dlya vyhoda iz programmy vvedite 0");
+		System.out.println("Dlya poisko towara vvedite 1");
+		
+
+		System.out.print(">>> ");
+		vybor = s.nextByte();
+		s.nextLine();
+
+		if(vybor==1){
+		
+			System.out.println("Dlya poiska tovara po nazvaniyu vvedite 1");
+			System.out.println("Dlya poiska tovara po cene vvedite 2");
+			System.out.println("Dlya poiska tovara po collichestvu vvedite 3");
+
+			System.out.print(">>> ");
+			vybor = s.nextByte();
+			s.nextLine();
+
+			poisk(towars, vybor, s);
+
+		}
+
+	}
+
+	static StringBuilder namePoisk;
+	static float pricePoisk;
+	static int collichestvoPoisk;
+
+	public static void poisk(Object spisoc[][], byte vybor, Scanner s){
+
+		int sovpodeniya = 0;
+		
+		if(vybor==1){
+
+			System.out.print("Vvedite nazvaniye iskomogo tovara: ");
+			namePoisk = new StringBuilder(s.nextLine());
+
+			System.out.println("Nachalo poisca.");
+
+			for (int i=0;i<spisoc.length;i++ ) {
+
+
+
+				if((namePoisk.toString()).equals(spisoc[i][0].toString())){
+
+					System.out.println("Nazvaniye: "+spisoc[i][0]+"    Cena: "+spisoc[i][1]+"    Collicestco: "+spisoc[i][2]);
+					sovpodeniya++;
+				}
+			
+			}
+
+			System.out.println("konec poisca. Naydeno sovpodeniy: "+sovpodeniya);
+
+		}else if(vybor==2){
+
+			System.out.print("Vvedite cenu iskomogo tovara: ");
+			pricePoisk = s.nextFloat();
+			s.nextLine();
+
+			System.out.println("Nachalo poisca.");
+
+			for (int i=0;i<spisoc.length;i++ ) {
+
+
+
+				if((float)spisoc[i][1]==pricePoisk){
+
+					System.out.println("Nazvaniye: "+spisoc[i][0]+"    Cena: "+spisoc[i][1]+"    Collicestco: "+spisoc[i][2]);
+					sovpodeniya++;
+				}
+			
+			}
+
+			System.out.println("konec poisca. Naydeno sovpodeniy: "+sovpodeniya);
+
+		}else if(vybor==3){
+
+			System.out.print("Vvedite collichestvo iskomogo tovara: ");
+			collichestvoPoisk = s.nextInt();
+			s.nextLine();
+
+			System.out.println("Nachalo poisca.");
+
+			for (int i=0;i<spisoc.length;i++ ) {
+
+
+
+				if((int)spisoc[i][2]==collichestvoPoisk){
+
+					System.out.println("Nazvaniye: "+spisoc[i][0]+"    Cena: "+spisoc[i][1]+"    Collicestco: "+spisoc[i][2]);
+					sovpodeniya++;
+				}
+			
+			}
+
+			System.out.println("konec poisca. Naydeno sovpodeniy: "+sovpodeniya);
+
+		}
+		
+
 	}
 
 
